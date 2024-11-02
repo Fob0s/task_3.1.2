@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>Age</td>
+        <td>Email</td>
+        <td>Details</td>
+    </tr>
+    <tr th:each = "user :${users}">
+        <td th:text = "${user.getId()}"></td>
+        <td th:text = "${user.getName()}"></td>
+        <td th:text = "${user.getAge()}"></td>
+        <td th:text = "${user.getEmail()}"></td>
+        <td><form th:action="@{/users/}">
+            <input type="hidden" th:value="${user.getId()}" name="id">
+            <button>details</button>
+        </form>
+    </tr>
+</table>
+
+<form action="/users/new">
+    <button>Create new user</button>
+</form>
+
+</body>
+</html>
